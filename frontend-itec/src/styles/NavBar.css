@@ -1,0 +1,142 @@
+/* Navbar principal */
+.navbar {
+    width: 15vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(200, 200, 200, 0.9);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.8rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Structura internă a conținutului navbarului */
+.navbar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Logo */
+.logo {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.logo-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Container dropdownuri */
+.dropdowns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+    flex-grow: 1;
+}
+
+/* Dropdown individual */
+.custom-dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Butonul principal din dropdown */
+.dropdown-toggle {
+    width: 45%;
+    padding: 0.4rem 0.6rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
+}
+
+/* Meniul dropdown */
+.dropdown-menu {
+    width: 6vw;
+    margin-top: 0.2rem;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    list-style: none;
+    padding: 0.4rem 0.6rem;
+    text-align: center;
+    font-size: 0.85rem;
+    backdrop-filter: blur(4px);
+    transition: background-color 0.2s ease;
+}
+
+/* Fiecare opțiune din meniu */
+.dropdown-menu li {
+    padding: 0.2rem 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover pe opțiune */
+.dropdown-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Butonul de dark theme fixat jos */
+.dark-theme-toggle {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+}
+
+/* Butonul de switch temă */
+.dark-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* === DARK THEME === */
+
+body.dark-theme .dropdown-toggle,
+body.dark-theme .dropdown-menu,
+body.dark-theme .dropdown-menu li{
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .dropdown-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* === LIGHT THEME === */
+
+body:not(.dark-theme) .dropdown-toggle,
+body:not(.dark-theme) .dropdown-menu,
+body:not(.dark-theme) .dropdown-menu li{
+    color: black;
+    border-color: rgba(0, 0, 0, 0.08);
+    background-color: rgba(0, 0, 0, 0.05);
+    opacity: 0.85;
+}
+
+body:not(.dark-theme) .dropdown-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    opacity: 1;
+}
