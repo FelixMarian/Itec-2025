@@ -16,7 +16,7 @@
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Structura internă a conținutului navbarului */
+/* Structura interna a conținutului navbarului */
 .navbar-content {
     display: flex;
     flex-direction: column;
@@ -65,6 +65,11 @@
     border: 1px solid transparent;
 }
 
+.dropdown-toggle:hover{
+    width: 47%;
+
+}
+
 /* Meniul dropdown */
 .dropdown-menu {
     width: 6vw;
@@ -99,7 +104,7 @@
     margin-bottom: 1.5rem;
 }
 
-/* Butonul de switch temă */
+/* Butonul de switch tema */
 .dark-btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
@@ -139,4 +144,18 @@ body:not(.dark-theme) .dropdown-menu li{
 body:not(.dark-theme) .dropdown-menu li:hover {
     background-color: rgba(0, 0, 0, 0.04);
     opacity: 1;
+}
+
+/*text negru pt germania si japonia*/
+body.force-black-text .dropdown-toggle,
+body.force-black-text .dropdown-menu,
+body.force-black-text .dropdown-menu li {
+    color: black !important;
+}
+
+/*text alb pt china*/
+body.force-white-text .dropdown-toggle,
+body.force-white-text .dropdown-menu,
+body.force-white-text .dropdown-menu li {
+    color: white !important;
 }
