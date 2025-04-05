@@ -38,6 +38,7 @@
 
     display: flex;
     align-items: center;
+    flex-display: column;
     justify-content: center;
 
     position: relative;
@@ -66,17 +67,15 @@
 
 /*responsive tlf*/
 
-/* ≤ 450px — telefon mic */
 @media (max-width: 450px) {
     .background-overlay-box {
-        width: 96%;
-        height: 68%;
-        border-radius: 12px;
-        padding: 0.8rem;
+        width: 90%;
+        height: 48%;
+        top: 70%;
     }
 }
 
-/* === max-width: între 451px și 800px === */
+
 @media (min-width: 451px) and (max-width: 800px) {
     .background-sections-container {
         margin-left: 200px;
@@ -90,10 +89,17 @@
     }
 }
 
-/* === max-width: între 801px și 1500px === */
 @media (min-width: 801px) and (max-width: 1500px) {
     .background-sections-container {
         margin-left: 200px;
         width: calc(100vw - 180px);
     }
+}
+
+.country-info {
+    color: white;
+    position: absolute;
+    top: 1px;
+    left: 20px;
+    font-size: 0.6rem;
 }
