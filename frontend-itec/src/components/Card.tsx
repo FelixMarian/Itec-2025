@@ -5,13 +5,12 @@ interface ProductProps {
     name: string;
     price: number;
     image1: string;
-    image2: string;
 }
 
 
 
 
-const Card: React.FC<ProductProps> = ({ name, price, image1, image2 }) => {
+const Card: React.FC<ProductProps> = ({ name, price, image1 }) => {
     const [theme, setTheme] = useState<string>("light");
 
     useEffect(() => {
@@ -23,7 +22,6 @@ const Card: React.FC<ProductProps> = ({ name, price, image1, image2 }) => {
         <div className={`product-card ${theme === "dark" ? "dark-theme" : "light-theme"}`}>
             <div className="product-images">
                 <img src={image1} alt={name} className="image1" />
-                <img src={image2} alt={name} className="image2" />
             </div>
             <div className="product-info">
                 <h3 className="product-name">{name}</h3>

@@ -1,7 +1,70 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Background.css";
 import Card from "./Card.tsx";
-import SpainP2I1 from "../assets/images/spain_product2_image1.jpg";
+
+//spania
+import s1 from "../assets/images/europa/spania/1.jpg";
+import s2 from "../assets/images/europa/spania/2.jpg";
+import s3 from "../assets/images/europa/spania/3.jpg";
+import s4 from "../assets/images/europa/spania/4.jpg";
+import s5 from "../assets/images/europa/spania/5.jpg";
+import s6 from "../assets/images/europa/spania/6.jpg";
+
+//uk
+import u1 from "../assets/images/europa/uk/1.jpg";
+import u2 from "../assets/images/europa/uk/2.jpg";
+import u3 from "../assets/images/europa/uk/3.jpg";
+import u4 from "../assets/images/europa/uk/4.jpg";
+import u5 from "../assets/images/europa/uk/5.jpg";
+import u6 from "../assets/images/europa/uk/6.jpg";
+
+//romania
+import r1 from "../assets/images/europa/romania/1.jpg";
+import r2 from "../assets/images/europa/romania/2.jpg";
+import r3 from "../assets/images/europa/romania/3.jpg";
+import r4 from "../assets/images/europa/romania/4.jpg";
+import r5 from "../assets/images/europa/romania/5.jpg";
+import r6 from "../assets/images/europa/romania/6.jpg";
+
+//germania
+import g1 from "../assets/images/europa/germania/1.jpg";
+import g2 from "../assets/images/europa/germania/2.jpg";
+import g3 from "../assets/images/europa/germania/3.jpg";
+import g4 from "../assets/images/europa/germania/4.jpg";
+import g5 from "../assets/images/europa/germania/5.jpg";
+import g6 from "../assets/images/europa/germania/6.jpg";
+
+
+//africaDeSud
+import afr1 from "../assets/images/africa/africaDeSud/1.jpg";
+import afr2 from "../assets/images/africa/africaDeSud/2.jpg";
+import afr3 from "../assets/images/africa/africaDeSud/3.jpg";
+import afr4 from "../assets/images/africa/africaDeSud/4.jpg";
+import afr5 from "../assets/images/africa/africaDeSud/5.jpg";
+import afr6 from "../assets/images/africa/africaDeSud/6.jpg";
+//camerun
+import c1 from "../assets/images/africa/camerun/1.jpg";
+import c2 from "../assets/images/africa/camerun/2.jpg";
+import c3 from "../assets/images/africa/camerun/3.jpg";
+import c4 from "../assets/images/africa/camerun/4.jpg";
+import c5 from "../assets/images/africa/camerun/5.jpg";
+import c6 from "../assets/images/africa/camerun/6.jpg";
+//ethiopia
+import e1 from "../assets/images/africa/ethiopia/1.jpg";
+import e2 from "../assets/images/africa/ethiopia/2.jpg";
+import e3 from "../assets/images/africa/ethiopia/3.jpg";
+import e4 from "../assets/images/africa/ethiopia/4.jpg";
+import e5 from "../assets/images/africa/ethiopia/5.jpg";
+import e6 from "../assets/images/africa/ethiopia/6.jpg";
+
+//nigeria
+import n1 from "../assets/images/africa/nigeria/1.jpg";
+import n2 from "../assets/images/africa/nigeria/2.jpg";
+import n3 from "../assets/images/africa/nigeria/3.jpg";
+import n4 from "../assets/images/africa/nigeria/4.jpg";
+import n5 from "../assets/images/africa/nigeria/5.jpg";
+import n6 from "../assets/images/africa/nigeria/6.jpg";
+
 
 interface BackgroundProps {
     country: number;
@@ -19,83 +82,83 @@ interface CountryProducts {
 }
 const countryProducts: CountryProducts = {
     11: { // Spania
-        Flamenco: [
+        Sardana: [
             {
-                name: "Hanorac Flamenco",
-                price: 120,
-                image1: "./images/spain_product1_image1.jpg",
-                image2: "./images/spain_product1_image2.jpg"
-            },
-            {
-                name: "Cămașă Flamenco",
-                price: 100,
-                image1: SpainP2I1,
-                image2: "./images/spain_product2_image2.jpg"
-            },
-            {
-                name: "Jeans Flamenco",
-                price: 150,
-                image1: "./images/spain_product3_image1.jpg",
-                image2: "./images/spain_product3_image2.jpg"
-            }
-        ],
-        Pop: [
-            {
-                name: "T-shirt Pop",
+                name: "Rochie sardana",
                 price: 90,
-                image1: "./images/spain_product4_image1.jpg",
+                image1: s1,
                 image2: "./images/spain_product4_image2.jpg"
             },
             {
-                name: "Hanorac Pop",
+                name: "Pantofi traditionali",
                 price: 130,
-                image1: "./images/spain_product5_image1.jpg",
+                image1: s2,
                 image2: "./images/spain_product5_image2.jpg"
             },
             {
-                name: "Pantaloni Pop",
+                name: "Rochie clasica",
                 price: 140,
-                image1: "./images/spain_product6_image1.jpg",
+                image1: s3,
                 image2: "./images/spain_product6_image2.jpg"
+            }
+        ],
+        Flamenco: [
+            {
+                name: "Pantofi Flamenco",
+                price: 120,
+                image1: s6,
+                image2: "./images/spain_product1_image2.jpg"
+            },
+            {
+                name: "Rochie Flamenco",
+                price: 100,
+                image1: s4,
+                image2: "./images/spain_product2_image2.jpg"
+            },
+            {
+                name: "Rochie Flamenco",
+                price: 150,
+                image1: s5,
+                image2: "./images/spain_product3_image2.jpg"
             }
         ]
     },
     12: { // Romania
-        Jazz: [
+        Populara: [
             {
-                name: "Hanorac Jazz",
+                name: "Rochie Populara",
                 price: 130,
-                image1: "./images/romania_product1_image1.jpg",
+                image1: r1,
                 image2: "./images/romania_product1_image2.jpg"
             },
             {
-                name: "T-shirt Jazz",
+                name: "Costum popular",
                 price: 80,
-                image1: "./images/romania_product2_image1.jpg",
+                image1: r2,
                 image2: "./images/romania_product2_image2.jpg"
             },
             {
-                name: "Jeans Jazz",
+                name: "Ie romaneasca",
                 price: 150,
-                image1: "./images/romania_product3_image1.jpg",
+                image1: r3,
                 image2: "./images/romania_product3_image2.jpg"
             }
         ],
-        Classical: [
+        Lautareasca: [
             {
-                name: "Sacou Clasic",
+                name: "Sacou Lautareasca",
                 price: 150,
                 image1: "./images/romania_product4_image1.jpg",
                 image2: "./images/romania_product4_image2.jpg"
             },
             {
-                name: "T-shirt Clasic",
+                name: "T-shirt Lautareasca",
                 price: 90,
                 image1: "./images/romania_product5_image1.jpg",
                 image2: "./images/romania_product5_image2.jpg"
             },
             {
-                name: "Jeans Clasic",
+                name: "Jeans Lautareasca",
                 price: 120,
                 image1: "./images/romania_product6_image1.jpg",
                 image2: "./images/romania_product6_image2.jpg"
@@ -103,43 +166,43 @@ const countryProducts: CountryProducts = {
         ]
     },
     13: { // Germania
-        Rock: [
+        Klassische_Musik: [
             {
-                name: "Hanorac Rock",
+                name: "Costum barbati",
                 price: 140,
-                image1: "./images/germany_product1_image1.jpg",
+                image1: g1,
                 image2: "./images/germany_product1_image2.jpg"
             },
             {
-                name: "T-shirt Rock",
+                name: "Pantofi barbati",
                 price: 100,
-                image1: "./images/germany_product2_image1.jpg",
+                image1: g2,
                 image2: "./images/germany_product2_image2.jpg"
             },
             {
-                name: "Jeans Rock",
+                name: "Rochie dama",
                 price: 160,
-                image1: "./images/germany_product3_image1.jpg",
+                image1: g3,
                 image2: "./images/germany_product3_image2.jpg"
             }
         ],
-        Electronic: [
+        Schlagger: [
             {
-                name: "Cămașă Electronic",
+                name: "Costum traditional",
                 price: 120,
-                image1: "./images/germany_product4_image1.jpg",
+                image1: g4,
                 image2: "./images/germany_product4_image2.jpg"
             },
             {
-                name: "T-shirt Electronic",
+                name: "Tricou modern dama",
                 price: 100,
-                image1: "./images/germany_product5_image1.jpg",
+                image1: g5,
                 image2: "./images/germany_product5_image2.jpg"
             },
             {
-                name: "Jeans Electronic",
+                name: "Costum barbat",
                 price: 140,
-                image1: "./images/germany_product6_image1.jpg",
+                image1: g6,
                 image2: "./images/germany_product6_image2.jpg"
             }
         ]
@@ -147,125 +210,125 @@ const countryProducts: CountryProducts = {
     14: { // UK
         Hip_Hop: [
             {
-                name: "Hanorac Hip-Hop",
+                name: "Tricou larg",
                 price: 130,
-                image1: "./images/uk_product1_image1.jpg",
+                image1: u1,
                 image2: "./images/uk_product1_image2.jpg"
             },
             {
-                name: "T-shirt Hip-Hop",
+                name: "Blugi largi",
                 price: 90,
-                image1: "./images/uk_product2_image1.jpg",
+                image1: u2,
                 image2: "./images/uk_product2_image2.jpg"
             },
             {
-                name: "Jeans Hip-Hop",
+                name: "Pantaloni tur lasat",
                 price: 140,
-                image1: "./images/uk_product3_image1.jpg",
+                image1: u3,
                 image2: "./images/uk_product3_image2.jpg"
             }
         ],
-        Indie: [
+        Drill: [
             {
-                name: "Cămașă Indie",
+                name: "Hoodie barbat",
                 price: 110,
-                image1: "./images/uk_product4_image1.jpg",
+                image1: u4,
                 image2: "./images/uk_product4_image2.jpg"
             },
             {
-                name: "T-shirt Indie",
+                name: "Sneakersi",
                 price: 90,
-                image1: "./images/uk_product5_image1.jpg",
+                image1: u5,
                 image2: "./images/uk_product5_image2.jpg"
             },
             {
-                name: "Jeans Indie",
+                name: "Geaca",
                 price: 120,
-                image1: "./images/uk_product6_image1.jpg",
+                image1: u6,
                 image2: "./images/uk_product6_image2.jpg"
             }
         ]
     },
     31: { // Etiopia
-        Afrobeat: [
+        Ethio_Jazz: [
             {
-                name: "Hanorac Afrobeat",
+                name: "Costum barbat",
                 price: 120,
-                image1: "./images/ethiopia_product1_image1.jpg",
+                image1: e1,
                 image2: "./images/ethiopia_product1_image2.jpg"
             },
             {
-                name: "T-shirt Afrobeat",
+                name: "Costum barbat",
                 price: 100,
-                image1: "./images/ethiopia_product2_image1.jpg",
+                image1: e2,
                 image2: "./images/ethiopia_product2_image2.jpg"
             },
             {
-                name: "Jeans Afrobeat",
+                name: "Costum barbat",
                 price: 140,
-                image1: "./images/ethiopia_product3_image1.jpg",
+                image1: e3,
                 image2: "./images/ethiopia_product3_image2.jpg"
             }
         ],
-        Highlife: [
+        Traditional_Ethiopian_Folk: [
             {
-                name: "Cămașă Highlife",
+                name: "Costum traditional dama",
                 price: 110,
-                image1: "./images/ethiopia_product4_image1.jpg",
+                image1: e4,
                 image2: "./images/ethiopia_product4_image2.jpg"
             },
             {
-                name: "T-shirt Highlife",
+                name: "Costum traditional barbat",
                 price: 95,
-                image1: "./images/ethiopia_product5_image1.jpg",
+                image1: e5,
                 image2: "./images/ethiopia_product5_image2.jpg"
             },
             {
-                name: "Jeans Highlife",
+                name: "Costume traditionale",
                 price: 130,
-                image1: "./images/ethiopia_product6_image1.jpg",
+                image1: e6,
                 image2: "./images/ethiopia_product6_image2.jpg"
             }
         ]
     },
     32: { // Nigeria
-        Gospel: [
+        Afrobeats: [
             {
-                name: "Hanorac Gospel",
+                name: "Camasa barbat",
                 price: 125,
-                image1: "./images/nigeria_product1_image1.jpg",
+                image1: n1,
                 image2: "./images/nigeria_product1_image2.jpg"
             },
             {
-                name: "T-shirt Gospel",
+                name: "Pantaloni",
                 price: 100,
-                image1: "./images/nigeria_product2_image1.jpg",
+                image1: n2,
                 image2: "./images/nigeria_product2_image2.jpg"
             },
             {
-                name: "Jeans Gospel",
+                name: "Geaca",
                 price: 150,
-                image1: "./images/nigeria_product3_image1.jpg",
+                image1: n3,
                 image2: "./images/nigeria_product3_image2.jpg"
             }
         ],
-        Soul: [
+        Highlife: [
             {
-                name: "Cămașă Soul",
+                name: "Rochie larga",
                 price: 120,
-                image1: "./images/nigeria_product4_image1.jpg",
+                image1: n4,
                 image2: "./images/nigeria_product4_image2.jpg"
             },
             {
-                name: "T-shirt Soul",
+                name: "Rochie",
                 price: 95,
-                image1: "./images/nigeria_product5_image1.jpg",
+                image1: n5,
                 image2: "./images/nigeria_product5_image2.jpg"
             },
             {
-                name: "Jeans Soul",
+                name: "Costum traditional",
                 price: 130,
-                image1: "./images/nigeria_product6_image1.jpg",
+                image1: n6,
                 image2: "./images/nigeria_product6_image2.jpg"
             }
         ]
@@ -273,89 +336,84 @@ const countryProducts: CountryProducts = {
     33: { // Africa de Sud
         Kwaito: [
             {
-                name: "Hanorac Kwaito",
+                name: "Costum barbat",
                 price: 130,
-                image1: "./images/southafrica_product1_image1.jpg",
+                image1: afr1,
                 image2: "./images/southafrica_product1_image2.jpg"
             },
             {
-                name: "T-shirt Kwaito",
+                name: "Palton si fusta",
                 price: 95,
-                image1: "./images/southafrica_product2_image1.jpg",
+                image1: afr2,
                 image2: "./images/southafrica_product2_image2.jpg"
             },
-            {
-                name: "Jeans Kwaito",
-                price: 140,
-                image1: "./images/southafrica_product3_image1.jpg",
-                image2: "./images/southafrica_product3_image2.jpg"
-            }
+            { name: "Palton si pantaloni", price: 140, image1: afr3, image2: "./images/southafrica_product3_image2.jpg"}
         ],
         Jazz: [
             {
-                name: "Cămașă Jazz",
+                name: "Costum barbat",
                 price: 100,
-                image1: "./images/southafrica_product4_image1.jpg",
+                image1: afr4,
                 image2: "./images/southafrica_product4_image2.jpg"
             },
             {
-                name: "T-shirt Jazz",
+                name: "Costum barbat",
                 price: 90,
-                image1: "./images/southafrica_product5_image1.jpg",
+                image1: afr5,
                 image2: "./images/southafrica_product5_image2.jpg"
             },
             {
-                name: "Jeans Jazz",
+                name: "Costum dama",
                 price: 130,
-                image1: "./images/southafrica_product6_image1.jpg",
+                image1: afr6,
                 image2: "./images/southafrica_product6_image2.jpg"
             }
         ]
     },
     34: { // Camerun
-        Zouk: [
+        Makossa: [
             {
-                name: "Hanorac Zouk",
+                name: "Costume copii",
                 price: 120,
-                image1: "./images/cameroon_product1_image1.jpg",
+                image1: c1,
                 image2: "./images/cameroon_product1_image2.jpg"
             },
             {
-                name: "T-shirt Zouk",
+                name: "Costum barbati",
                 price: 100,
-                image1: "./images/cameroon_product2_image1.jpg",
+                image1: c2,
                 image2: "./images/cameroon_product2_image2.jpg"
             },
             {
-                name: "Jeans Zouk",
+                name: "Costum dama",
                 price: 130,
-                image1: "./images/cameroon_product3_image1.jpg",
+                image1: c3,
                 image2: "./images/cameroon_product3_image2.jpg"
             }
         ],
-        Soca: [
+        Assiko: [
             {
-                name: "Cămașă Soca",
+                name: "Costum barbati",
                 price: 110,
-                image1: "./images/cameroon_product4_image1.jpg",
+                image1: c4,
                 image2: "./images/cameroon_product4_image2.jpg"
             },
             {
-                name: "T-shirt Soca",
+                name: "Costum barbati",
                 price: 90,
-                image1: "./images/cameroon_product5_image1.jpg",
+                image1: c5,
                 image2: "./images/cameroon_product5_image2.jpg"
             },
             {
-                name: "Jeans Soca",
+                name: "Costum barbati",
                 price: 120,
-                image1: "./images/cameroon_product6_image1.jpg",
+                image1: c6,
                 image2: "./images/cameroon_product6_image2.jpg"
             }
         ]
-    },
-
+    }
 };
+
 const countryGradients: { [key: number]: { light: string[]; dark: string[] } } = {
     11: {
         light: [
@@ -441,33 +499,33 @@ const countryGradients: { [key: number]: { light: string[]; dark: string[] } } =
 const musicTypes: { [key: number]: { country: string; music1: string; music2: string } } = {
     11: {
         country: "Spania",
-        music1: "Pop",
+        music1: "Sardana",
         music2: "Flamenco"
     },
     12: {
         country: "Romania",
-        music1: "Jazz",
-        music2: "Classical"
+        music1: "Populara",
+        music2: "Lautareasca"
     },
     13: {
         country: "Germania",
-        music1: "Rock",
-        music2: "Electronic"
+        music1: "Klassische_Musik",
+        music2: "Schlagger"
     },
     14: {
         country: "UK",
-        music1: "Hip-Hop",
-        music2: "Indie"
+        music1: "Hip_Hop",
+        music2: "Drill"
     },
     31: {
         country: "Etiopia",
-        music1: "Afrobeat",
-        music2: "Highlife"
+        music1: "Ethio_Jazz",
+        music2: "Traditional_Ethiopian_Folk"
     },
     32: {
         country: "Nigeria",
-        music1: "Gospel",
-        music2: "Soul"
+        music1: "Afrobeats",
+        music2: "Highlife"
     },
     33: {
         country: "Africa de Sud",
@@ -476,8 +534,8 @@ const musicTypes: { [key: number]: { country: string; music1: string; music2: st
     },
     34: {
         country: "Camerun",
-        music1: "Zouk",
-        music2: "Soca"
+        music1: "Makossa",
+        music2: "Assiko"
     }
 };
 
@@ -495,7 +553,6 @@ const ProductsList: React.FC<{ countryId: number; musicType: string }> = ({ coun
                     name={product.name}
                     price={product.price}
                     image1={product.image1}
-                    image2={product.image2}
                 />
             ))}
         </div>
