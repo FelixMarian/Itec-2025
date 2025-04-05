@@ -107,7 +107,11 @@ const Background: React.FC<BackgroundProps> = ({ country }) => {
                     key={`${theme}-${idx}`}
                     className={`background-section ${fadeOut ? "fade-out" : "fade-in"}`}
                     style={{ background: gradient }}
-                />
+                >
+                    <div className="background-overlay-box">
+                        {/* Poți adăuga conținut aici dacă vrei */}
+                    </div>
+                </div>
             ))}
         </div>
     );

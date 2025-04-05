@@ -1,13 +1,15 @@
 .background-sections-container {
     flex-grow: 1;
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    position: relative;
 }
 
 .background-section {
     height: 100vh;
+    width: 100%;
     scroll-snap-align: start;
     background-size: cover;
     background-position: center;
@@ -16,13 +18,34 @@
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1.2s ease-in-out forwards;
+    position: relative;
 }
 
-.background-section {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
+.background-overlay-box {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1000px;
+    height: 80%;
+
+    background-color: rgba(240, 240, 240, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+
+    padding: 1rem;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
+/* ANIMAȚII */
 .fade-in {
     animation: fadeIn 0.5s ease-in-out forwards;
 }
@@ -39,4 +62,38 @@
 @keyframes fadeOut {
     from { opacity: 1; transform: translateY(0); }
     to { opacity: 0.6; transform: translateY(0); }
+}
+
+/*responsive tlf*/
+
+/* ≤ 450px — telefon mic */
+@media (max-width: 450px) {
+    .background-overlay-box {
+        width: 96%;
+        height: 68%;
+        border-radius: 12px;
+        padding: 0.8rem;
+    }
+}
+
+/* === max-width: între 451px și 800px === */
+@media (min-width: 451px) and (max-width: 800px) {
+    .background-sections-container {
+        margin-left: 200px;
+        width: 100vw;
+    }
+
+    .background-overlay-box {
+        width: 94%;
+        height: 75%;
+        border-radius: 16px;
+    }
+}
+
+/* === max-width: între 801px și 1500px === */
+@media (min-width: 801px) and (max-width: 1500px) {
+    .background-sections-container {
+        margin-left: 200px;
+        width: calc(100vw - 180px);
+    }
 }
