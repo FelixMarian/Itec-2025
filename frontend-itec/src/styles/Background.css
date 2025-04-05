@@ -1,0 +1,42 @@
+.background-sections-container {
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.background-section {
+    height: 100vh;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 1.2s ease-in-out, opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+.background-section {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.6; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0.6; transform: translateY(0); }
+}

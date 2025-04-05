@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 
@@ -9,7 +9,7 @@ interface NavBarProps {
     country: number;
 }
 
-// Imagini light/dark pe țară
+//imagini light/dark pe tara
 const countryImages: { [key: number]: { light: string; dark: string } } = {
     11: { light: "/src/assets/navBarImg/Europa/Spania.png", dark: "/src/assets/navBarImg/Europa/SpaniaDark.png" },
     12: { light: "/src/assets/navBarImg/Europa/Romania.png", dark: "/src/assets/navBarImg/Europa/RomaniaDark.png" },
@@ -29,8 +29,6 @@ const countryImages: { [key: number]: { light: string; dark: string } } = {
     43: { light: "/src/assets/navBarImg/Asia/China.png", dark: "/src/assets/navBarImg/Asia/ChinaDark.png" },
     44: { light: "/src/assets/navBarImg/Asia/Russia.png", dark: "/src/assets/navBarImg/Asia/RussiaDark.png" }
 };
-
-
 
 interface DropdownProps {
     title: string;
@@ -76,7 +74,15 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
     const navigate = useNavigate();
 
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState(() => {
+        const savedTheme = localStorage.getItem("theme");
+        return savedTheme === "dark";
+    });
+
+    useEffect(() => {
+        document.body.classList.toggle("dark-theme", isDarkTheme);
+        localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+    }, [isDarkTheme]);
 
     const handleToggle = (title: string) => {
         setOpenDropdown(prev => (prev === title ? null : title));
@@ -84,7 +90,6 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
 
     const handleThemeToggle = () => {
         setIsDarkTheme(prev => !prev);
-        document.body.classList.toggle("dark-theme");
     };
 
     const handleNavigate = (region: string, country: string) => {
@@ -98,17 +103,19 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
         : "/images/default.png";
 
     const logo = isDarkTheme ? logoWhite : logoBlack;
-    React.useEffect(() => {
+
+    useEffect(() => {
         const body = document.body;
-        if (country === 13 || country === 42 || country === 44) { //japonia, germania sau rusia
+        if ([13, 42, 44].includes(country)) {
             body.classList.add("force-black-text");
-        } else if (country === 43) { //china
+        } else if (country === 43) {
             body.classList.add("force-white-text");
-        }
-        else {
+        } else {
             body.classList.remove("force-black-text");
+            body.classList.remove("force-white-text");
         }
     }, [country]);
+
     return (
         <div
             className="navbar"
@@ -124,34 +131,10 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
                     <img src={logo} alt="Logo" className="logo-img" />
                 </div>
                 <div className="dropdowns">
-                    <Dropdown
-                        title="Europa"
-                        items={["Spania", "Romania", "Germania", "UK"]}
-                        isOpen={openDropdown === "Europa"}
-                        onToggle={() => handleToggle("Europa")}
-                        onNavigate={handleNavigate}
-                    />
-                    <Dropdown
-                        title="America"
-                        items={["USA", "Mexic", "Jamaica", "Brazilia", "Argentina"]}
-                        isOpen={openDropdown === "America"}
-                        onToggle={() => handleToggle("America")}
-                        onNavigate={handleNavigate}
-                    />
-                    <Dropdown
-                        title="Africa"
-                        items={["Ethiopia", "Nigeria", "Africa de Sud", "Camerun"]}
-                        isOpen={openDropdown === "Africa"}
-                        onToggle={() => handleToggle("Africa")}
-                        onNavigate={handleNavigate}
-                    />
-                    <Dropdown
-                        title="Asia"
-                        items={["Koreea", "Japonia", "China", "Rusia"]}
-                        isOpen={openDropdown === "Asia"}
-                        onToggle={() => handleToggle("Asia")}
-                        onNavigate={handleNavigate}
-                    />
+                    <Dropdown title="Europa" items={["Spania", "Romania", "Germania", "UK"]} isOpen={openDropdown === "Europa"} onToggle={() => handleToggle("Europa")} onNavigate={handleNavigate} />
+                    <Dropdown title="America" items={["USA", "Mexic", "Jamaica", "Brazilia", "Argentina"]} isOpen={openDropdown === "America"} onToggle={() => handleToggle("America")} onNavigate={handleNavigate} />
+                    <Dropdown title="Africa" items={["Ethiopia", "Nigeria", "Africa de Sud", "Camerun"]} isOpen={openDropdown === "Africa"} onToggle={() => handleToggle("Africa")} onNavigate={handleNavigate} />
+                    <Dropdown title="Asia" items={["Koreea", "Japonia", "China", "Rusia"]} isOpen={openDropdown === "Asia"} onToggle={() => handleToggle("Asia")} onNavigate={handleNavigate} />
                 </div>
                 <div className="dark-theme-toggle">
                     <button className="dark-btn transparent-btn" onClick={handleThemeToggle}>
