@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Card.css";
 
 interface ProductProps {
@@ -6,9 +6,6 @@ interface ProductProps {
     price: number;
     image1: string;
 }
-
-
-
 
 const Card: React.FC<ProductProps> = ({ name, price, image1 }) => {
     const [theme, setTheme] = useState<string>("light");
@@ -27,10 +24,10 @@ const Card: React.FC<ProductProps> = ({ name, price, image1 }) => {
                 <h3 className="product-name">{name}</h3>
                 <p className="product-price">{price} RON</p>
             </div>
+            {/* Butonul de adăugare în coș */}
+            <button className="add-to-cart-btn">Adauga in cos</button>
         </div>
     );
 };
-
-
 
 export default Card;

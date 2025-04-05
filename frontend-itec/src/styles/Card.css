@@ -1,10 +1,11 @@
 .product-card {
+    position: relative; /* Necesare pentru a poziționa butonul în colțul din dreapta jos */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Asigură că prețul și butonul sunt separate */
     align-items: center;
     width: 220px;
-    height: 320px; /* Creștere a înălțimii totale */
+    height: 350px; /* Creștere a înălțimii totale pentru a face loc butonului */
     background-color: var(--card-bg-light);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -54,13 +55,13 @@
 }
 
 .product-info {
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
     width: 100%;
 }
 
 .product-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0;
     color: var(--text-light);
     font-weight: 700;
@@ -71,6 +72,27 @@
     font-weight: bold;
     color: var(--price-light);
     margin-top: 0.5rem;
+    margin-bottom: 20px; /* Adăugăm mai mult spațiu între preț și buton */
+}
+
+/* Butonul de adăugare în coș */
+.product-card .add-to-cart-btn {
+    position: absolute;
+    bottom: 10px; /* Plasăm butonul la 10px de partea de jos */
+    right: 10px; /* Plasăm butonul la 10px de partea dreaptă */
+    padding: 8px 12px;
+    background-color: #ff6f00;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card .add-to-cart-btn:hover {
+    background-color: #ff4f00; /* Schimbă culoarea la hover */
 }
 
 .products-display {
@@ -82,25 +104,25 @@
     padding: 20px;
 }
 
-/*light*/
+/* Temă pentru light */
 .light-theme {
     --card-bg-light: #ffffff;
     --text-light: #000000;
     --price-light: #e60000;
 }
 
-/*dark*/
+/* Temă pentru dark */
 .dark-theme {
     --card-bg-light: #2C2C2C;
     --text-light: #ffffff;
     --price-light: #ff6f00;
 }
 
-/*responsiv tlf */
+/* Responsiv tlf */
 @media (max-width: 768px) {
     .product-card {
         width: 180px;
-        height: 280px;
+        height: 300px;
     }
 
     .products-display {
