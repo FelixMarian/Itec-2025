@@ -8,6 +8,13 @@ import logoBlack from '../assets/logos/logotext_b.svg';
 interface NavBarProps {
     country: number;
 }
+interface DropdownProps {
+    title: string;
+    items: string[];
+    isOpen: boolean;
+    onToggle: () => void;
+    onNavigate: (region: string, country: string) => void;
+}
 
 // imagini light/dark pe tara
 const countryImages: { [key: number]: { light: string; dark: string } } = {
@@ -20,14 +27,6 @@ const countryImages: { [key: number]: { light: string; dark: string } } = {
     33: { light: "/src/assets/navBarImg/Africa/AfricaDeSud.png", dark: "/src/assets/navBarImg/Africa/AfricaDeSudDark.png" },
     34: { light: "/src/assets/navBarImg/Africa/Camerun.png", dark: "/src/assets/navBarImg/Africa/CamerunDark.png" },
 };
-
-interface DropdownProps {
-    title: string;
-    items: string[];
-    isOpen: boolean;
-    onToggle: () => void;
-    onNavigate: (region: string, country: string) => void;
-}
 
 const Dropdown: React.FC<DropdownProps> = ({ title, items, isOpen, onToggle, onNavigate }) => {
     const region = title.toLowerCase();
@@ -73,10 +72,24 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
     const [fontSize, setFontSize] = useState("normal");  // Stare pentru dimensiunea fontului
     const [cursorType] = useState("default");  // Stare pentru cursor
 
+    const [logo, setLogo] = useState(logoBlack);  // Starea logo-ului
+
     useEffect(() => {
+        // Verificăm dacă tema este dark și țara este Germania
+        if (isDarkTheme && country === 13) {
+            setLogo(logoBlack);  // Forțăm logo-ul negru pentru Germania în tema dark
+        } else if (country === 33) {
+            const body = document.body;
+            body.classList.add("force-white-text");
+            setLogo(logoWhite)
+        }
+        else {
+            setLogo(isDarkTheme ? logoWhite : logoBlack);  // Schimbăm logo-ul în funcție de tema curentă
+        }
+
         document.body.classList.toggle("dark-theme", isDarkTheme);
         localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
-    }, [isDarkTheme]);
+    }, [isDarkTheme, country]);
 
     const handleToggle = (title: string) => {
         setOpenDropdown(prev => (prev === title ? null : title));
@@ -95,8 +108,6 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
             ? countryImages[country].dark
             : countryImages[country].light
         : "/images/default.png";
-
-    const logo = isDarkTheme ? logoWhite : logoBlack;
 
     const handleFontSizeChange = (size: string) => {
         setFontSize(size);

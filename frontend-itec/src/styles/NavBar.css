@@ -107,7 +107,8 @@ body.dark-theme .dropdown-menu li:hover {
 
 body:not(.dark-theme) .dropdown-toggle,
 body:not(.dark-theme) .dropdown-menu,
-body:not(.dark-theme) .dropdown-menu li {
+body:not(.dark-theme) .dropdown-menu li
+{
     color: black;
     border-color: rgba(0, 0, 0, 0.08);
     background-color: rgba(0, 0, 0, 0.05);
@@ -123,13 +124,13 @@ body:not(.dark-theme) .dropdown-menu li:hover {
 body.force-black-text .dropdown-toggle,
 body.force-black-text .dropdown-menu,
 body.force-black-text .dropdown-menu li,
-.dark-btn {
+.dark-btn{
     color: black !important;
 }
 
 body.force-white-text .dropdown-toggle,
 body.force-white-text .dropdown-menu,
-body.force-white-text .dropdown-menu li {
+body.force-white-text .dropdown-menu li{
     color: white !important;
 }
 
