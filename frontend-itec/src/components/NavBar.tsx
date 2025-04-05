@@ -128,19 +128,31 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
         >
             <div className="navbar-content">
                 <div className="logo">
-                    <img src={logo} alt="Logo" className="logo-img" />
+                    <img src={logo} alt="Logo" className="logo-img"/>
                 </div>
                 <div className="dropdowns">
-                    <Dropdown title="Europa" items={["Spania", "Romania", "Germania", "UK"]} isOpen={openDropdown === "Europa"} onToggle={() => handleToggle("Europa")} onNavigate={handleNavigate} />
-                    <Dropdown title="America" items={["USA", "Mexic", "Jamaica", "Brazilia", "Argentina"]} isOpen={openDropdown === "America"} onToggle={() => handleToggle("America")} onNavigate={handleNavigate} />
-                    <Dropdown title="Africa" items={["Ethiopia", "Nigeria", "Africa de Sud", "Camerun"]} isOpen={openDropdown === "Africa"} onToggle={() => handleToggle("Africa")} onNavigate={handleNavigate} />
-                    <Dropdown title="Asia" items={["Koreea", "Japonia", "China", "Rusia"]} isOpen={openDropdown === "Asia"} onToggle={() => handleToggle("Asia")} onNavigate={handleNavigate} />
+                    <Dropdown title="Europa" items={["Spania", "Romania", "Germania", "UK"]}
+                              isOpen={openDropdown === "Europa"} onToggle={() => handleToggle("Europa")}
+                              onNavigate={handleNavigate}/>
+                    <Dropdown title="America" items={["USA", "Mexic", "Jamaica", "Brazilia", "Argentina"]}
+                              isOpen={openDropdown === "America"} onToggle={() => handleToggle("America")}
+                              onNavigate={handleNavigate}/>
+                    <Dropdown title="Africa" items={["Ethiopia", "Nigeria", "Africa de Sud", "Camerun"]}
+                              isOpen={openDropdown === "Africa"} onToggle={() => handleToggle("Africa")}
+                              onNavigate={handleNavigate}/>
+                    <Dropdown title="Asia" items={["Koreea", "Japonia", "China", "Rusia"]}
+                              isOpen={openDropdown === "Asia"} onToggle={() => handleToggle("Asia")}
+                              onNavigate={handleNavigate}/>
                 </div>
                 <div className="dark-theme-toggle">
-                    <button className="dark-btn transparent-btn" onClick={handleThemeToggle}>
-                        {isDarkTheme ? "Light Theme" : "Dark Theme"}
-                    </button>
+                    <label className={`theme-switch ${isDarkTheme ? "dark" : "light"}`}>
+                        <input type="checkbox" checked={isDarkTheme} onChange={handleThemeToggle}/>
+                        <span className="slider">
+            <span className="icon">{isDarkTheme ? "🌙" : "☀️"}</span>
+        </span>
+                    </label>
                 </div>
+
             </div>
         </div>
     );

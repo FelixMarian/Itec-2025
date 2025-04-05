@@ -88,22 +88,7 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.dark-theme-toggle {
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: 1.5rem;
-}
 
-.dark-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    background-color: transparent;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    color: white;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
 
 /*DARK THEME*/
 body.dark-theme .dropdown-toggle,
@@ -164,6 +149,61 @@ body.force-white-text .dropdown-menu li {
     opacity: 0;
 }
 
+
+/*darkBtnSwitch*/
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    transition: background-color 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 4px;
+}
+
+.slider .icon {
+    font-size: 18px;
+    height: 24px;
+    width: 24px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s;
+}
+
+/*light*/
+.theme-switch.light .slider {
+    background-color: #87ceeb;
+}
+
+.theme-switch.light .slider .icon {
+    transform: translateX(0);
+}
+
+/*dark*/
+.theme-switch.dark .slider {
+    background-color: #1a1a1a;
+}
+
+.theme-switch.dark .slider .icon {
+    transform: translateX(26px);
+}
 
 
 /*Responsive tel*/

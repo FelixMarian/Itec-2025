@@ -1,9 +1,13 @@
 import NavBar from "../../components/NavBar.tsx";
+import Background from "../../components/Background.tsx";
 
 const UK = () => {
     return (
         <>
-            <NavBar country={14}/>
+            <div className="container">
+                <Background country={14}/>
+                <NavBar country={14}/>
+            </div>
         </>
     );
 }

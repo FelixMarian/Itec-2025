@@ -1,9 +1,13 @@
 import NavBar from "../../components/NavBar.tsx";
+import Background from "../../components/Background.tsx";
 
 const Koreea = () => {
     return (
         <>
-            <NavBar country={41}/>
+            <div className="container">
+                <Background country={41}/>
+                <NavBar country={41}/>
+            </div>
         </>
     );
 }
