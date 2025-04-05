@@ -541,13 +541,42 @@ const musicTypes: { [key: number]: { country: string; music1: string; music2: st
 
 const ProductsList: React.FC<{ countryId: number; musicType: string }> = ({ countryId, musicType }) => {
     const country = countryProducts[countryId];
-
-
     const products = country[musicType] || [];
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [randomProducts, setRandomProducts] = useState<Array<ProductProps>>([]);
+
+    useEffect(() => {
+        // Monitorizează schimbarea dimensiunii ecranului
+        const handleResize = () => setScreenWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        let selectedProducts: Array<ProductProps> = [];
+        if (screenWidth < 880) {
+            // Alege un singur produs aleatoriu pentru dimensiuni sub 880px
+            const randomIndex = Math.floor(Math.random() * products.length);
+            selectedProducts = [products[randomIndex]];
+        } else if (screenWidth >= 880 && screenWidth <= 1190) {
+            // Alege două produse aleatorii pentru dimensiuni între 880px și 1190px
+            while (selectedProducts.length < 2) {
+                const randomIndex = Math.floor(Math.random() * products.length);
+                if (!selectedProducts.includes(products[randomIndex])) {
+                    selectedProducts.push(products[randomIndex]);
+                }
+            }
+        } else {
+            // Afișează toate produsele pentru dimensiuni mai mari de 1190px
+            selectedProducts = products;
+        }
+        setRandomProducts(selectedProducts);
+    }, [screenWidth, products]);
 
     return (
         <div className="products-display">
-            {products.map((product, index) => (
+            {randomProducts.map((product, index) => (
                 <Card
                     key={index}
                     name={product.name}
@@ -558,58 +587,55 @@ const ProductsList: React.FC<{ countryId: number; musicType: string }> = ({ coun
         </div>
     );
 };
+const Background: React.FC<BackgroundProps> = ({ country }) => {
+    const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+    const [gradients, setGradients] = useState<string[]>(countryGradients[country]?.[theme === "dark" ? "dark" : "light"] || ["linear-gradient(to bottom, #ccc, #eee)"]);
+    const [fadeOut, setFadeOut] = useState(false);
 
-    const Background: React.FC<BackgroundProps> = ({ country }) => {
-        const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
-        const [gradients, setGradients] = useState<string[]>(countryGradients[country]?.[theme === "dark" ? "dark" : "light"] || ["linear-gradient(to bottom, #ccc, #eee)"]);
-        const [fadeOut, setFadeOut] = useState(false);
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            const isDark = document.body.classList.contains("dark-theme");
+            const newTheme = isDark ? "dark" : "light";
+            if (theme !== newTheme) {
+                setFadeOut(true);
+                setTimeout(() => {
+                    setTheme(newTheme);
+                    setGradients(countryGradients[country]?.[newTheme] || ["linear-gradient(to bottom, #ccc, #eee)"]);
+                    setFadeOut(false);
+                }, 500);
+            }
+        });
 
-        useEffect(() => {
-            const observer = new MutationObserver(() => {
-                const isDark = document.body.classList.contains("dark-theme");
-                const newTheme = isDark ? "dark" : "light";
-                if (theme !== newTheme) {
-                    setFadeOut(true);
-                    setTimeout(() => {
-                        setTheme(newTheme);
-                        setGradients(countryGradients[country]?.[newTheme] || ["linear-gradient(to bottom, #ccc, #eee)"]);
-                        setFadeOut(false);
-                    }, 500);
-                }
-            });
+        observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
-            observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+        return () => observer.disconnect();
+    }, [theme, country]);
 
-            return () => observer.disconnect();
-        }, [theme, country]);
+    return (
+        <div className="background-sections-container">
+            {gradients.map((gradient, idx) => {
+                const isMusic1 = idx === 0;
+                const musicTdasype = isMusic1 ? musicTypes[country]?.music1 : musicTypes[country]?.music2;
 
-        return (
-            <div className="background-sections-container">
-                {gradients.map((gradient, idx) => {
-                    const isMusic1 = idx === 0; // Prima secțiune pentru music1
-                    const musicTdasype = isMusic1 ? musicTypes[country]?.music1 : musicTypes[country]?.music2;
-
-                    return (
-                        <div
-                            key={`${theme}-${idx}`}
-                            className={`background-section ${fadeOut ? "fade-out" : "fade-in"}`}
-                            style={{ background: gradient }}
-                        >
-                            <div className="background-overlay-box">
-
-                                <ProductsList countryId={country} musicType={musicTdasype} />
-                                <div className="country-info">
-                                    <h1 className="country-name">
-                                          {musicTypes[country]?.country} - {musicTdasype}
-                                    </h1>
-                                </div>
+                return (
+                    <div
+                        key={`${theme}-${idx}`}
+                        className={`background-section ${fadeOut ? "fade-out" : "fade-in"}`}
+                        style={{ background: gradient }}
+                    >
+                        <div className="background-overlay-box">
+                            <ProductsList countryId={country} musicType={musicTdasype} />
+                            <div className="country-info">
+                                <h1 className="country-name">
+                                    {musicTypes[country]?.country} - {musicTdasype}
+                                </h1>
                             </div>
                         </div>
-                    );
-                })}
-            </div>
-        );
-    };
-
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
 export default Background
 

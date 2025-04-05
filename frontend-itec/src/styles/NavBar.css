@@ -202,7 +202,7 @@ body.force-white-text .dropdown-menu li {
 
 
 /*responsive tlv*/
-@media (max-width: 450px) {
+@media (max-width: 480px) {
     .navbar {
         width: 100vw;
         height: auto;
