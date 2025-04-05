@@ -1,4 +1,3 @@
-/* === DESKTOP === */
 .navbar {
     width: 16vw;
     min-width: 180px;
@@ -92,7 +91,7 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* === DARK MODE / LIGHT MODE === */
+/*dark si light mode*/
 body.dark-theme .dropdown-toggle,
 body.dark-theme .dropdown-menu,
 body.dark-theme .dropdown-menu li {
@@ -120,7 +119,7 @@ body:not(.dark-theme) .dropdown-menu li:hover {
     opacity: 1;
 }
 
-/* Forțări text */
+/*format fortat culoare text*/
 body.force-black-text .dropdown-toggle,
 body.force-black-text .dropdown-menu,
 body.force-black-text .dropdown-menu li,
@@ -134,13 +133,13 @@ body.force-white-text .dropdown-menu li{
     color: white !important;
 }
 
-/* ANIMAȚIE NAVBAR */
+/*animatie navbar*/
 @keyframes slideInLeft {
     from { opacity: 0; transform: translateX(-30px); }
     to { opacity: 1; transform: translateX(0); }
 }
 
-/* === TOGGLE SWITCH === */
+/*toggle-dark-white*/
 .theme-switch {
     position: relative;
     display: inline-block;
@@ -200,6 +199,48 @@ body.force-white-text .dropdown-menu li{
     text-align: center;
 }
 
+/*Accesibilitate*/
+.accessibility-toggle {
+    display: flex;
+    flex-direction: column;
+    width: 17vw;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-right: 2rem;
+}
+
+.accessibility-toggle button {
+    padding: 0.4rem 1rem;
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: auto;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-toggle button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.accessibility-toggle button:active {
+    transform: translateY(1px);
+}
+
+body.dark-theme .accessibility-toggle button {
+    background-color: #333;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-theme .accessibility-toggle button:hover {
+    background-color: #444;
+}
 
 
 /*responsive tlv*/
@@ -229,12 +270,12 @@ body.force-white-text .dropdown-menu li{
     .logo {
         margin: 0.3rem 0 0.1rem 0;
         width: 100%;
+        height: 25%;
         text-align: center;
     }
 
     .logo-img {
         max-height: 30px;
-        height: auto;
         width: auto;
     }
 
@@ -243,7 +284,7 @@ body.force-white-text .dropdown-menu li{
         gap: 0.2rem;
         width: 100%;
         align-items: center;
-        margin-top: -5rem;
+        margin-top: -1rem;
     }
 
     .dropdown-toggle,
@@ -255,7 +296,7 @@ body.force-white-text .dropdown-menu li{
 
     .dark-theme-toggle {
         margin-top: 0.3rem;
-        width: 100%;
+        width: 50%;
         display: flex;
         justify-content: center;
     }
@@ -270,55 +311,90 @@ body.force-white-text .dropdown-menu li{
         width: 18px;
         font-size: 14px;
     }
-}
-/* Adăugăm stiluri pentru secțiunea de accesibilitate și plasăm butoanele mai sus */
-.accessibility-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Adăugăm un pic mai mult spațiu între butoane */
-    align-items: center;
-    margin-bottom: 1.5rem; /* Plasăm butoanele mai sus */
+    .navButtons{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .accessibility-toggle {
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        margin-right: 2rem;
+    }
+
+    .accessibility-toggle button {
+        padding: 0.4rem 1rem;
+        background-color: #f4f4f4;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
 }
 
-/* Stilizarea butoanelor de accesibilitate */
-.accessibility-toggle button {
-    padding: 0.4rem 1rem;
-    background-color: #f4f4f4;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+@media screen and (min-width: 481px) and (max-width: 540px) {
+    .accessibility-toggle {
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        margin-right: 2rem;
+    }
+
+    .accessibility-toggle button {
+        padding: 0.4rem 1rem;
+        background-color: #f4f4f4;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
 }
 
-.accessibility-toggle button:hover {
-    background-color: #e0e0e0;
-    transform: translateY(-2px); /* Efect de ridicare la hover */
+@media screen and (min-width: 541px) and (max-width: 800px) {
+    .accessibility-toggle {
+        display: flex;
+        flex-direction: column;
+        width: 25vw;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        margin-right: 2rem;
+    }
+
+    .accessibility-toggle button {
+        padding: 0.4rem 1rem;
+        background-color: #f4f4f4;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
 }
 
-/* Stiluri pentru butonul de mărire font și schimbare cursor */
-.accessibility-toggle button:active {
-    transform: translateY(1px); /* Efect de apăsare */
-}
-
-/* Modificăm stilul butonului pe dark mode */
-body.dark-theme .accessibility-toggle button {
-    background-color: #333;
-    color: white;
-    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-}
-
-body.dark-theme .accessibility-toggle button:hover {
-    background-color: #444;
-}
-
-/* Adăugăm și o mică distanțare între elementele din navbar pentru a nu se suprapune */
 .navbar-content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 1rem; /* Adăugăm un pic de spațiu între secțiuni */
+    gap: 1rem;
 }
+

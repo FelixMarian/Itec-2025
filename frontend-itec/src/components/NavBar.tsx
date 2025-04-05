@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 
+//Logo-uri
 import logoWhite from '../assets/logos/logotext_w.svg';
 import logoBlack from '../assets/logos/logotext_b.svg';
 
+//Interfete
 interface NavBarProps {
     country: number;
 }
@@ -16,7 +18,7 @@ interface DropdownProps {
     onNavigate: (region: string, country: string) => void;
 }
 
-// imagini light/dark pe tara
+//imagini light/dark pe tara
 const countryImages: { [key: number]: { light: string; dark: string } } = {
     11: { light: "/src/assets/navBarImg/Europa/Spania.png", dark: "/src/assets/navBarImg/Europa/SpaniaDark.png" },
     12: { light: "/src/assets/navBarImg/Europa/Romania.png", dark: "/src/assets/navBarImg/Europa/RomaniaDark.png" },
@@ -28,6 +30,8 @@ const countryImages: { [key: number]: { light: string; dark: string } } = {
     34: { light: "/src/assets/navBarImg/Africa/Camerun.png", dark: "/src/assets/navBarImg/Africa/CamerunDark.png" },
 };
 
+
+//Sub-componenta dropdown
 const Dropdown: React.FC<DropdownProps> = ({ title, items, isOpen, onToggle, onNavigate }) => {
     const region = title.toLowerCase();
 
@@ -61,67 +65,47 @@ const normalizeString = (str: string) => {
 };
 
 const NavBar: React.FC<NavBarProps> = ({ country }) => {
-    const navigate = useNavigate();
 
+    //useStates
+    const navigate = useNavigate();
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+    const [fontSize, setFontSize] = useState("normal");
+    const [cursorType] = useState("default");
+    const [logo, setLogo] = useState(logoBlack);
     const [isDarkTheme, setIsDarkTheme] = useState(() => {
         const savedTheme = localStorage.getItem("theme");
         return savedTheme === "dark";
     });
 
-    const [fontSize, setFontSize] = useState("normal");  // Stare pentru dimensiunea fontului
-    const [cursorType] = useState("default");  // Stare pentru cursor
-
-    const [logo, setLogo] = useState(logoBlack);  // Starea logo-ului
-
+    //useEffects
     useEffect(() => {
-        // Verificăm dacă tema este dark și țara este Germania
-        if (isDarkTheme && country === 13) {
-            setLogo(logoBlack);  // Forțăm logo-ul negru pentru Germania în tema dark
-        } else if (country === 33) {
+        //13-germania | 33 - Africa de sud
+        if (isDarkTheme && country === 13) setLogo(logoBlack);
+        else if (country === 33) {
             const body = document.body;
             body.classList.add("force-white-text");
             setLogo(logoWhite)
-        }
-        else {
-            setLogo(isDarkTheme ? logoWhite : logoBlack);  // Schimbăm logo-ul în funcție de tema curentă
-        }
+        } else  setLogo(isDarkTheme ? logoWhite : logoBlack);
 
         document.body.classList.toggle("dark-theme", isDarkTheme);
         localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
     }, [isDarkTheme, country]);
-
-    const handleToggle = (title: string) => {
-        setOpenDropdown(prev => (prev === title ? null : title));
-    };
-
-    const handleThemeToggle = () => {
-        setIsDarkTheme(prev => !prev);
-    };
-
-    const handleNavigate = (region: string, country: string) => {
-        navigate(`/${region}/${country}`);
-    };
-
-    const imageSrc = countryImages[country]
-        ? isDarkTheme
-            ? countryImages[country].dark
-            : countryImages[country].light
-        : "/images/default.png";
-
-    const handleFontSizeChange = (size: string) => {
-        setFontSize(size);
-    };
-
     useEffect(() => {
         document.body.style.fontSize = fontSize === "large" ? "18px" : "14px";  // Schimbă fontul
         document.body.style.cursor = cursorType === "pointer" ? "pointer" : "default";  // Schimbă cursorul
     }, [fontSize, cursorType]);
 
-    // Adăugăm funcția pentru navigarea la pagina principală
-    const handleLogoClick = () => {
-        navigate("/");  // Navigare către pagina principală
-    };
+    //handle-uri
+    const handleToggle = (title: string) => { setOpenDropdown(prev => (prev === title ? null : title)); };
+    const handleThemeToggle = () => { setIsDarkTheme(prev => !prev); };
+    const handleNavigate = (region: string, country: string) => { navigate(`/${region}/${country}`); };
+    const handleFontSizeChange = (size: string) => { setFontSize(size); };
+    const handleLogoClick = () => { navigate("/"); };
+    const imageSrc = countryImages[country]
+        ? isDarkTheme
+            ? countryImages[country].dark
+            : countryImages[country].light
+        : "../../assets/error.png";
 
     return (
         <div
@@ -134,7 +118,7 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
             }}
         >
             <div className="navbar-content">
-                <div className="logo" onClick={handleLogoClick}>  {/* Modificat aici */}
+                <div className="logo" onClick={handleLogoClick}>
                     <img src={logo} alt="Logo" className="logo-img"/>
                 </div>
                 <div className="dropdowns">
@@ -145,20 +129,20 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
                               isOpen={openDropdown === "Africa"} onToggle={() => handleToggle("Africa")}
                               onNavigate={handleNavigate}/>
                 </div>
-                <div className="dark-theme-toggle">
-                    <label className={`theme-switch ${isDarkTheme ? "dark" : "light"}`}>
-                        <input type="checkbox" checked={isDarkTheme} onChange={handleThemeToggle}/>
-                        <span className="slider">
+                <div className="navButtons">
+                    <div className="dark-theme-toggle">
+                        <label className={`theme-switch ${isDarkTheme ? "dark" : "light"}`}>
+                            <input type="checkbox" checked={isDarkTheme} onChange={handleThemeToggle}/>
+                            <span className="slider">
                             <span className="icon">{isDarkTheme ? "🌙" : "☀️"}</span>
                         </span>
-                    </label>
-                </div>
-
-                {/* Buton de accesibilitate */}
-                <div className="accessibility-toggle">
-                    <button onClick={() => handleFontSizeChange(fontSize === "normal" ? "large" : "normal")}>
-                        {fontSize === "normal" ? "Mărește font" : "Resetează font"}
-                    </button>
+                        </label>
+                    </div>
+                    <div className="accessibility-toggle">
+                        <button onClick={() => handleFontSizeChange(fontSize === "normal" ? "large" : "normal")}>
+                            {fontSize === "normal" ? "Mărește font" : "Resetează font"}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
