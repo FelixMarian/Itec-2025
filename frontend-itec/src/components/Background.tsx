@@ -146,21 +146,21 @@ const countryProducts: CountryProducts = {
         ],
         Lautareasca: [
             {
-                name: "Sacou Lautareasca",
+                name: "Pantofi piele",
                 price: 150,
-                image1: "./images/romania_product4_image1.jpg",
+                image1: r4,
                 image2: "./images/romania_product4_image2.jpg"
             },
             {
-                name: "T-shirt Lautareasca",
+                name: "Sacou barbat",
                 price: 90,
-                image1: "./images/romania_product5_image1.jpg",
+                image1: r5,
                 image2: "./images/romania_product5_image2.jpg"
             },
             {
-                name: "Jeans Lautareasca",
+                name: "Pantaloni barbat",
                 price: 120,
-                image1: "./images/romania_product6_image1.jpg",
+                image1: r6,
                 image2: "./images/romania_product6_image2.jpg"
             }
         ]

@@ -270,3 +270,54 @@ body.force-white-text .dropdown-menu li {
         font-size: 14px;
     }
 }
+/* Adăugăm stiluri pentru secțiunea de accesibilitate și plasăm butoanele mai sus */
+.accessibility-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Adăugăm un pic mai mult spațiu între butoane */
+    align-items: center;
+    margin-bottom: 1.5rem; /* Plasăm butoanele mai sus */
+}
+
+/* Stilizarea butoanelor de accesibilitate */
+.accessibility-toggle button {
+    padding: 0.4rem 1rem;
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-toggle button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px); /* Efect de ridicare la hover */
+}
+
+/* Stiluri pentru butonul de mărire font și schimbare cursor */
+.accessibility-toggle button:active {
+    transform: translateY(1px); /* Efect de apăsare */
+}
+
+/* Modificăm stilul butonului pe dark mode */
+body.dark-theme .accessibility-toggle button {
+    background-color: #333;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-theme .accessibility-toggle button:hover {
+    background-color: #444;
+}
+
+/* Adăugăm și o mică distanțare între elementele din navbar pentru a nu se suprapune */
+.navbar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1rem; /* Adăugăm un pic de spațiu între secțiuni */
+}

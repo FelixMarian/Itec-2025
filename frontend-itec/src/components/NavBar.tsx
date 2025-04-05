@@ -9,7 +9,7 @@ interface NavBarProps {
     country: number;
 }
 
-//imagini light/dark pe tara
+// imagini light/dark pe tara
 const countryImages: { [key: number]: { light: string; dark: string } } = {
     11: { light: "/src/assets/navBarImg/Europa/Spania.png", dark: "/src/assets/navBarImg/Europa/SpaniaDark.png" },
     12: { light: "/src/assets/navBarImg/Europa/Romania.png", dark: "/src/assets/navBarImg/Europa/RomaniaDark.png" },
@@ -70,6 +70,9 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
         return savedTheme === "dark";
     });
 
+    const [fontSize, setFontSize] = useState("normal");  // Stare pentru dimensiunea fontului
+    const [cursorType] = useState("default");  // Stare pentru cursor
+
     useEffect(() => {
         document.body.classList.toggle("dark-theme", isDarkTheme);
         localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
@@ -95,17 +98,19 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
 
     const logo = isDarkTheme ? logoWhite : logoBlack;
 
+    const handleFontSizeChange = (size: string) => {
+        setFontSize(size);
+    };
+
     useEffect(() => {
-        const body = document.body;
-        if ([13, 42, 44].includes(country)) {
-            body.classList.add("force-black-text");
-        } else if (country === 43) {
-            body.classList.add("force-white-text");
-        } else {
-            body.classList.remove("force-black-text");
-            body.classList.remove("force-white-text");
-        }
-    }, [country]);
+        document.body.style.fontSize = fontSize === "large" ? "18px" : "14px";  // Schimbă fontul
+        document.body.style.cursor = cursorType === "pointer" ? "pointer" : "default";  // Schimbă cursorul
+    }, [fontSize, cursorType]);
+
+    // Adăugăm funcția pentru navigarea la pagina principală
+    const handleLogoClick = () => {
+        navigate("/");  // Navigare către pagina principală
+    };
 
     return (
         <div
@@ -118,7 +123,7 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
             }}
         >
             <div className="navbar-content">
-                <div className="logo">
+                <div className="logo" onClick={handleLogoClick}>  {/* Modificat aici */}
                     <img src={logo} alt="Logo" className="logo-img"/>
                 </div>
                 <div className="dropdowns">
@@ -133,11 +138,17 @@ const NavBar: React.FC<NavBarProps> = ({ country }) => {
                     <label className={`theme-switch ${isDarkTheme ? "dark" : "light"}`}>
                         <input type="checkbox" checked={isDarkTheme} onChange={handleThemeToggle}/>
                         <span className="slider">
-            <span className="icon">{isDarkTheme ? "🌙" : "☀️"}</span>
-        </span>
+                            <span className="icon">{isDarkTheme ? "🌙" : "☀️"}</span>
+                        </span>
                     </label>
                 </div>
 
+                {/* Buton de accesibilitate */}
+                <div className="accessibility-toggle">
+                    <button onClick={() => handleFontSizeChange(fontSize === "normal" ? "large" : "normal")}>
+                        {fontSize === "normal" ? "Mărește font" : "Resetează font"}
+                    </button>
+                </div>
             </div>
         </div>
     );
