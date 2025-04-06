@@ -188,8 +188,6 @@
             light: ["linear-gradient(90deg, #FFDEE9 0%, #B5FFFC 100%)", "linear-gradient(90deg, #FFE0E0, #FFB6B6, #FF9999)"],
             dark: ["linear-gradient(135deg, #0F2027, #203A43, #2C5364)", "linear-gradient(120deg, #232526, #414345, #111)"]}
     };
-
-
     const musicTypes: { [key: number]: { country: string; music1: string; music2: string } } = {
         11: {
             country: "Spania",
