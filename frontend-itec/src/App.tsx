@@ -9,11 +9,12 @@ import Germania from "./pages/europaPages/Germania";
 import UK from "./pages/europaPages/UK";
 
 // America
-import USA from "./pages/americaPages/USA";
+/*import USA from "./pages/americaPages/USA";
 import Mexic from "./pages/americaPages/Mexic";
 import Jamaica from "./pages/americaPages/Jamaica";
 import Brazilia from "./pages/americaPages/Brazilia";
-import Argentina from "./pages/americaPages/Argentina";
+import Argentina from "./pages/americaPages/Argentina";*/
+
 
 // Africa
 import Ethiopia from "./pages/africaPages/Ethiopia";
@@ -22,11 +23,11 @@ import AfricaDeSud from "./pages/africaPages/AfricaDeSud";
 import Camerun from "./pages/africaPages/Camerun";
 
 // Asia
-import Koreea from "./pages/asiaPages/Koreea";
+/*import Koreea from "./pages/asiaPages/Koreea";
 import Japonia from "./pages/asiaPages/Japonia";
 import China from "./pages/asiaPages/China";
 import Rusia from "./pages/asiaPages/Rusia";
-
+*/
 function App() {
     return (
         <Router>
@@ -39,12 +40,12 @@ function App() {
                 <Route path="/europa/germania" element={<Germania />} />
                 <Route path="/europa/uk" element={<UK />} />
 
-                {/* America */}
+                {/* America
                 <Route path="/america/usa" element={<USA />} />
                 <Route path="/america/mexic" element={<Mexic />} />
                 <Route path="/america/jamaica" element={<Jamaica />} />
                 <Route path="/america/brazilia" element={<Brazilia />} />
-                <Route path="/america/argentina" element={<Argentina />} />
+                <Route path="/america/argentina" element={<Argentina />} /> */}
 
                 {/* Africa */}
                 <Route path="/africa/ethiopia" element={<Ethiopia />} />
@@ -52,11 +53,11 @@ function App() {
                 <Route path="/africa/africadesud" element={<AfricaDeSud />} />
                 <Route path="/africa/camerun" element={<Camerun />} />
 
-                {/* Asia */}
+                {/* Asia
                 <Route path="/asia/koreea" element={<Koreea />} />
                 <Route path="/asia/japonia" element={<Japonia />} />
                 <Route path="/asia/china" element={<China />} />
-                <Route path="/asia/rusia" element={<Rusia />} />
+                <Route path="/asia/rusia" element={<Rusia />} /> */}
             </Routes>
         </Router>
     );
