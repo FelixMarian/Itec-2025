@@ -3,13 +3,13 @@ import { Pose } from "@mediapipe/pose";
 import * as mpPose from "@mediapipe/pose";
 import NavBar from "../components/NavBar.tsx";
 
+import tshirt from "/src/assets/probe-clothes/iTEC-tshirt.png";
+
 // Define the virtual try-on component
 const VirtualTryOn = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null); // For displaying generated image
-
-  let showManequin = true;
 
   useEffect(() => {
     if (!capturedImage) {
@@ -49,13 +49,11 @@ const VirtualTryOn = () => {
       const dataUrl = canvas.toDataURL("image/png");
       setCapturedImage(dataUrl);
     }
-    showManequin = false;
   };
 
   const handleRetake = () => {
     setCapturedImage(null);
     setGeneratedImage(null); // Reset generated image
-    showManequin = true;
   };
 
   const handleGenerate = async () => {
@@ -88,7 +86,7 @@ const VirtualTryOn = () => {
       ctx.drawImage(userImg, 0, 0);
   
       const tShirt = new Image();
-      tShirt.src = "/src/assets/probe-clothes/iTEC-tshirt.png";
+      tShirt.src = tshirt;
   
       tShirt.onload = () => {
         // Coordonate în pixeli
@@ -128,7 +126,7 @@ const VirtualTryOn = () => {
   
 
 const detectPoseFromImage = (image: HTMLImageElement): Promise<mpPose.Results> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const pose = new Pose({
       locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
     });

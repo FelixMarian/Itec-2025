@@ -6,6 +6,23 @@ import "../styles/NavBar.css";
 import logoWhite from '../assets/logos/logotext_w.svg';
 import logoBlack from '../assets/logos/logotext_b.svg';
 
+import SpL from "/src/assets/navBarImg/Europa/Spania.png";
+import SpD from "/src/assets/navBarImg/Europa/SpaniaDark.png" ;
+import RoL from "/src/assets/navBarImg/Europa/Romania.png";
+import RoD from "/src/assets/navBarImg/Europa/RomaniaDark.png";
+import GeL from "/src/assets/navBarImg/Europa/Germania.png";
+import GeD from "/src/assets/navBarImg/Europa/GermaniaDark.png";
+import UKL from "/src/assets/navBarImg/Europa/UK.png";
+import UKD from "/src/assets/navBarImg/Europa/UKDark.png";
+import EtL from "/src/assets/navBarImg/Africa/Ethiopia.png";
+import EtD from "/src/assets/navBarImg/Africa/EthiopiaDark.png";
+import NiL from "/src/assets/navBarImg/Africa/Nigeria.png";
+import NiD from "/src/assets/navBarImg/Africa/NigeriaDark.png";
+import AfL from "/src/assets/navBarImg/Africa/AfricaDeSud.png";
+import AfD from "/src/assets/navBarImg/Africa/AfricaDeSudDark.png";
+import CaL from "/src/assets/navBarImg/Africa/Camerun.png";
+import CaD from "/src/assets/navBarImg/Africa/CamerunDark.png";
+
 //Interfete
 interface NavBarProps {
     country: number;
@@ -20,14 +37,14 @@ interface DropdownProps {
 
 //imagini light/dark pe tara
 const countryImages: { [key: number]: { light: string; dark: string } } = {
-    11: { light: "/src/assets/navBarImg/Europa/Spania.png", dark: "/src/assets/navBarImg/Europa/SpaniaDark.png" },
-    12: { light: "/src/assets/navBarImg/Europa/Romania.png", dark: "/src/assets/navBarImg/Europa/RomaniaDark.png" },
-    13: { light: "/src/assets/navBarImg/Europa/Germania.png", dark: "/src/assets/navBarImg/Europa/GermaniaDark.png" },
-    14: { light: "/src/assets/navBarImg/Europa/UK.png", dark: "/src/assets/navBarImg/Europa/UKDark.png" },
-    31: { light: "/src/assets/navBarImg/Africa/Ethiopia.png", dark: "/src/assets/navBarImg/Africa/EthiopiaDark.png" },
-    32: { light: "/src/assets/navBarImg/Africa/Nigeria.png", dark: "/src/assets/navBarImg/Africa/NigeriaDark.png" },
-    33: { light: "/src/assets/navBarImg/Africa/AfricaDeSud.png", dark: "/src/assets/navBarImg/Africa/AfricaDeSudDark.png" },
-    34: { light: "/src/assets/navBarImg/Africa/Camerun.png", dark: "/src/assets/navBarImg/Africa/CamerunDark.png" },
+    11: { light: SpL, dark: SpD },
+    12: { light: RoL, dark: RoD },
+    13: { light: GeL, dark: GeD },
+    14: { light: UKL, dark: UKD },
+    31: { light: EtL, dark: EtD},
+    32: { light: NiL, dark: NiD },
+    33: { light: AfL, dark: AfD },
+    34: { light: CaL, dark: CaD  },
 };
 
 
